@@ -20,11 +20,6 @@ public class PresencaService {
     }
     @Timed(value = "salvando_presenca", description = "Verficando o tempo de execução para a função salvarPresenca()")
     public void salvarPresenca(Presenca presenca){
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         presencaRepository.save(presenca);
     }
 

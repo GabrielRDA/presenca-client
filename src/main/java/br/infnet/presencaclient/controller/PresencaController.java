@@ -3,7 +3,6 @@ package br.infnet.presencaclient.controller;
 import br.infnet.presencaclient.model.Presenca;
 import br.infnet.presencaclient.services.PresencaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,29 +16,30 @@ public class PresencaController {
 
     @Autowired
     PresencaService presencaService;
+    static final String NAME_ENTITY = "Presenca";
 
     @PostMapping("marcarPresenca")
     public ResponseEntity<Map<String, Object>> marcarPresenca(@RequestParam String nomeProf, String nomeAluno){
         Presenca presenca = new Presenca(nomeProf,nomeAluno,"Presente","-");
         presencaService.salvarPresenca(presenca);
-        System.out.println("Presença marcada para o aluno: " + nomeAluno);
-        return ResponseEntity.ok(Map.of("Presenca",presenca));
+        //System.out.println("Presença marcada para o aluno: " + nomeAluno);
+        return ResponseEntity.ok(Map.of(NAME_ENTITY,presenca));
     }
 
     @PostMapping("marcarAusencia")
     public ResponseEntity<Map<String, Object>> marcarAusencia(@RequestParam String nomeProf, String nomeAluno, String motivo){
         Presenca presenca = new Presenca(nomeProf,nomeAluno,"Ausente",motivo);
         presencaService.salvarPresenca(presenca);
-        System.out.println("Ausencia Marcada para o aluno:" + nomeAluno);
-        return ResponseEntity.ok(Map.of("Presenca",presenca));
+        //System.out.println("Ausencia Marcada para o aluno:" + nomeAluno);
+        return ResponseEntity.ok(Map.of(NAME_ENTITY,presenca));
     }
 
     @PostMapping("marcarAtraso")
     public ResponseEntity<Map<String, Object>> marcarAtraso(@RequestParam String nomeProf, String nomeAluno, String motivo){
         Presenca presenca = new Presenca(nomeProf,nomeAluno,"Atrasado",motivo);
         presencaService.salvarPresenca(presenca);
-        System.out.println("Atraso Marcado para o aluno:" + nomeAluno);
-        return ResponseEntity.ok(Map.of("Presenca",presenca));
+        //System.out.println("Atraso Marcado para o aluno:" + nomeAluno);
+        return ResponseEntity.ok(Map.of(NAME_ENTITY,presenca));
     }
 
     @GetMapping("procurarPresencaPorProf")
