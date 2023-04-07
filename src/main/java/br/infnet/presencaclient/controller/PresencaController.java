@@ -22,7 +22,6 @@ public class PresencaController {
     public ResponseEntity<Map<String, Object>> marcarPresenca(@RequestParam String nomeProf, String nomeAluno){
         Presenca presenca = new Presenca(nomeProf,nomeAluno,"Presente","-");
         presencaService.salvarPresenca(presenca);
-        //System.out.println("Presença marcada para o aluno: " + nomeAluno);
         return ResponseEntity.ok(Map.of(NAME_ENTITY,presenca));
     }
 
@@ -30,7 +29,6 @@ public class PresencaController {
     public ResponseEntity<Map<String, Object>> marcarAusencia(@RequestParam String nomeProf, String nomeAluno, String motivo){
         Presenca presenca = new Presenca(nomeProf,nomeAluno,"Ausente",motivo);
         presencaService.salvarPresenca(presenca);
-        //System.out.println("Ausencia Marcada para o aluno:" + nomeAluno);
         return ResponseEntity.ok(Map.of(NAME_ENTITY,presenca));
     }
 
@@ -38,7 +36,6 @@ public class PresencaController {
     public ResponseEntity<Map<String, Object>> marcarAtraso(@RequestParam String nomeProf, String nomeAluno, String motivo){
         Presenca presenca = new Presenca(nomeProf,nomeAluno,"Atrasado",motivo);
         presencaService.salvarPresenca(presenca);
-        //System.out.println("Atraso Marcado para o aluno:" + nomeAluno);
         return ResponseEntity.ok(Map.of(NAME_ENTITY,presenca));
     }
 
