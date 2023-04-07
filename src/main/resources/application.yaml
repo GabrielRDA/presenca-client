@@ -1,0 +1,26 @@
+#server.port=8080
+  #spring.application.name=presenca
+  #management.endpoints.web.exposure.include=*
+#management.endpoint.metrics.enabled=true
+#management.metrics.export.prometheus.enabled=true
+server:
+  port: 8080
+spring:
+  application:
+    name: presenca
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+
